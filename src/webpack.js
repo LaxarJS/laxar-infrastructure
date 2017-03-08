@@ -14,7 +14,7 @@ export function webpack( options = {} ) {
    const browser = path.relative( context, pkg.browser || `dist/${name}.js` );
    const rules = options.rules || [];
    const alias = options.alias || {};
-   const externals = Object.keys( pkg.peerDependencies ).reduce( (externals, name) => {
+   const externals = Object.keys( pkg.peerDependencies || {} ).reduce( (externals, name) => {
       const key = `${name}$`;
       const value = alias[ key ] || alias[ name ] || name;
 
