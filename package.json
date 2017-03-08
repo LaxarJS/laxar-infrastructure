@@ -35,6 +35,7 @@
     "karma-sauce-launcher": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.2",
+    "loader-utils": "^1.0.3",
     "source-map-support": "^0.4.10",
     "webpack-jasmine-html-runner-plugin": "^0.7.0"
   },

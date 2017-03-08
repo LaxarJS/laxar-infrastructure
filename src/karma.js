@@ -6,6 +6,7 @@
 
 import path from 'path';
 import { webpack } from './webpack';
+import { DUMMY_PATH } from './dummy';
 
 export function karma( specs, options ) {
    const browsers = [];
@@ -39,16 +40,17 @@ export function karma( specs, options ) {
       reporters.push( 'saucelabs' );
    }
 
-   const polyfills = require.resolve( 'laxar/dist/polyfills.js' ) 
-   const files = [ polyfills, { pattern: `${polyfills}.map`, included: false } ];
-   const preprocessors = {};
+   const polyfills = path.resolve( options.context, 'node_modules/laxar/dist/polyfills.js' ) 
+   const entry = require.resolve( './dummy.js' );
+   const files = [
+      polyfills,
+      { pattern: `${polyfills}.map`, included: false },
+      entry
+   ];
+   const preprocessors = {
+      [ entry ]: [ 'webpack', 'sourcemap' ]
+   };
    const proxies = {};
-
-   specs.forEach( spec => {
-      const file = path.resolve( options.context, spec );
-      files.push( file );
-      preprocessors[ file ] = [ 'webpack', 'sourcemap' ];
-   } );
 
    return {
       browsers,
@@ -59,8 +61,7 @@ export function karma( specs, options ) {
       frameworks: [ 'jasmine' ],
       webpack: webpack( options ).karmaSpec( specs ),
       webpackMiddleware: {
-         noInfo: true,
-         quiet: true
+         noInfo: true
       },
       customLaunchers: {
          'Chrome TravisCi': {
@@ -85,6 +86,9 @@ export function karma( specs, options ) {
             browserName: 'safari',
             platform: 'macOS 10.12'
          }
+      },
+      sauceLabs: {
+         testName: webpack( options ).name
       },
       browserNoActivityTimeout: 5000,
       singleRun: true,
