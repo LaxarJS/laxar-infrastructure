@@ -53,7 +53,7 @@ export function webpack( options = {} ) {
       vendor() {
          return this.config( {
             entry: {
-               [ `${name}-vendor` ]: Object.keys( externals )
+               [ `${name}.vendor` ]: Object.keys( externals )
             },
             output: {
                path: path.dirname( browser ),
@@ -75,15 +75,20 @@ export function webpack( options = {} ) {
             }
          } );
       },
-      browserSpec() {
+      karmaSpec( specs ) {
+         return this.config();
+      },
+      browserSpec( specs, jasmineHtmlRunnerOptions ) {
          const WebpackJasmineHtmlRunnerPlugin = require( 'webpack-jasmine-html-runner-plugin' );
          return this.config( {
-            entry: WebpackJasmineHtmlRunnerPlugin.entry.apply( WebpackJasmineHtmlRunnerPlugin, arguments ),
-            plugins: [ new WebpackJasmineHtmlRunnerPlugin() ],
+            entry: {
+               [ `${name}.spec` ]: specs
+            },
+            plugins: [ new WebpackJasmineHtmlRunnerPlugin( jasmineHtmlRunnerOptions ) ],
             output: {
-               path: path.join( context, 'spec-output' ),
-               publicPath: '/',
-               filename: '[name].bundle.js'
+               path: path.dirname( browser ),
+               publicPath: `/${path.relative( context, path.dirname( browser ) )}`,
+               filename: path.basename( browser ).replace( name, '[name]' )
             }
          } );
       },

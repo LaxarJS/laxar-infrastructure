@@ -4,9 +4,10 @@
  * http://laxarjs.org/license
  */
 
+import path from 'path';
 import { webpack } from './webpack';
 
-export function karma( options ) {
+export function karma( specs, options ) {
    const browsers = [];
    const reporters = [ 'progress' ];
    const isSauceAvailable = !!(process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY);
@@ -38,14 +39,25 @@ export function karma( options ) {
       reporters.push( 'saucelabs' );
    }
 
+   const polyfills = require.resolve( 'laxar/dist/polyfills.js' ) 
+   const files = [ polyfills, { pattern: `${polyfills}.map`, included: false } ];
+   const preprocessors = {};
+   const proxies = {};
+
+   specs.forEach( spec => {
+      const file = path.resolve( options.context, spec );
+      files.push( file );
+      preprocessors[ file ] = [ 'webpack', 'sourcemap' ];
+   } );
+
    return {
       browsers,
-      frameworks: [ 'jasmine' ],
-      preprocessors: {
-      },
-      proxies: {},
+      files,
+      preprocessors,
+      proxies,
       reporters,
-      webpack: webpack( options ).config(),
+      frameworks: [ 'jasmine' ],
+      webpack: webpack( options ).karmaSpec( specs ),
       webpackMiddleware: {
          noInfo: true,
          quiet: true
