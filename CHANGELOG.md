@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#7](https://github.com/LaxarJS/laxar-infrastructure/issues/7): production: fix dist bundle being incorrectly named with browser spec naming scheme
+
 
 ## v0.1.0-alpha.3
 

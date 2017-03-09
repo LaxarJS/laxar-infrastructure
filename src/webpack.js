@@ -122,21 +122,20 @@ export function webpack( options = {} ) {
 }
 
 function mergeConfig( config, ...configs ) {
+   console.log( 'merge', config, ...configs );
 
    configs.forEach( source => {
       Object.keys( source ).forEach( key => {
          let value = source[ key ];
 
-         if( Array.isArray( config[ key ] ) ) {
-            if( !Array.isArray( value ) ) {
-               value = [ value ];
-            }
+         if( Array.isArray( value ) ) {
+            config[ key ] = config[ key ] || [];
             config[ key ].push( ...value );
             return;
          }
 
-         if( typeof config[ key ] === 'object' && typeof value === 'object' ) {
-            mergeConfig( config[ key ], value );
+         if( typeof value === 'object' ) {
+            config[ key ] = mergeConfig( config[ key ] || {}, value );
             return;
          }
 
