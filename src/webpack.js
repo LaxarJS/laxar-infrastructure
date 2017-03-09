@@ -15,7 +15,11 @@ export function webpack( options = {} ) {
    const browser = path.resolve( context, pkg.browser || `dist/${name}.js` );
    const rules = options.rules || [];
    const alias = options.alias || {};
-   const externals = Object.keys( pkg.peerDependencies || {} ).reduce( (externals, name) => {
+
+   const externalNames = []
+      .concat( Object.keys( pkg.dependencies || {} ) )
+      .concat( Object.keys( pkg.peerDependencies || {} ) );
+   const externals = externalNames.reduce( (externals, name) => {
       const key = `${name}$`;
       const value = alias[ key ] || alias[ name ] || name;
 
@@ -45,7 +49,7 @@ export function webpack( options = {} ) {
    return {
       get name() { return name; },
       get version() { return pkg.version; },
-      get externals() { return Object.keys( externals ) },
+      get externals() { return Object.keys( externals ); },
       library() {
          return this.config( {
             entry: {
