@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.1.0-alpha.3
+
 - [#6](https://github.com/LaxarJS/laxar-infrastructure/issues/6): production: treat dependencies as externals
 
 
