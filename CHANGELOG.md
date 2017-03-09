@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v0.1.0-alpha.4
+
 - [#8](https://github.com/LaxarJS/laxar-infrastructure/issues/8): browser-spec, karma: always interpret specs as paths (instead of modules)
 - [#7](https://github.com/LaxarJS/laxar-infrastructure/issues/7): production: fix dist bundle being incorrectly named with browser spec naming scheme
 
