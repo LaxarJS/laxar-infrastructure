@@ -107,7 +107,7 @@ export function webpack( options = {} ) {
          return this.config( {
             entry: specs.reduce( (entry, spec) => ( {
                ...entry,
-               ...WebpackJasmineHtmlRunnerPlugin.entry( spec )
+               [ spec.replace( /\.[a-z0-9]+$/, '' ) ]: path.resolve( context, spec )
             } ), {} ),
             plugins: [ new WebpackJasmineHtmlRunnerPlugin( jasmineHtmlRunnerOptions ) ],
             output: {
@@ -122,7 +122,6 @@ export function webpack( options = {} ) {
 }
 
 function mergeConfig( config, ...configs ) {
-   console.log( 'merge', config, ...configs );
 
    configs.forEach( source => {
       Object.keys( source ).forEach( key => {
