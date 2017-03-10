@@ -6,6 +6,7 @@
 
 import path from 'path';
 import { DUMMY_PATH } from './dummy';
+import { NormalModuleReplacementPlugin } from 'webpack';
 
 export function webpack( options = {} ) {
    const context = path.resolve( options.context || process.cwd() );
@@ -29,6 +30,15 @@ export function webpack( options = {} ) {
    }, options.externals || {} );
    const plugins = options.plugins || [];
    const devtool = options.devtool || '#source-map';
+
+   const useMain = new NormalModuleReplacementPlugin(
+      new RegExp( path.basename( browser ) + '$' ),
+      result => {
+         if( result.resource === browser ) {
+            console.log( result.resource );
+            result.resource = path.resolve( context, main );
+         }
+      } );
 
    const config = {
       context,
@@ -98,7 +108,10 @@ export function webpack( options = {} ) {
                      files
                   }
                } ]
-            }
+            },
+            plugins: [
+               useMain
+            ]
          } );
       },
       browserSpec( specs, jasmineHtmlRunnerOptions ) {
@@ -109,10 +122,13 @@ export function webpack( options = {} ) {
                ...entry,
                [ spec.replace( /\.[a-z0-9]+$/, '' ) ]: path.resolve( context, spec )
             } ), {} ),
-            plugins: [ new WebpackJasmineHtmlRunnerPlugin( jasmineHtmlRunnerOptions ) ],
             output: {
                filename: '[name].bundle.js'
-            }
+            },
+            plugins: [
+               new WebpackJasmineHtmlRunnerPlugin( jasmineHtmlRunnerOptions ),
+               useMain
+            ]
          } );
       },
       config( options ) {
