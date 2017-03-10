@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#9](https://github.com/LaxarJS/laxar-infrastructure/issues/9): browser-spec, karma: replace dist-bundle of widgets with source file
+
 
 ## v0.1.0-alpha.4
 
