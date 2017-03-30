@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+- [#10](https://github.com/LaxarJS/laxar-infrastructure/issues/10): webpack: expect webpack config instead of custom format as input
+   + **BREAKING CHANGE:** see ticket for details
+
 
 ## v0.1.0-alpha.5
 

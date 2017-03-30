@@ -14,8 +14,9 @@ export function webpack( options = {} ) {
    const name = pkg.name || path.basename( context );
    const main = path.relative( context, pkg.main || `${name}.js` );
    const browser = path.resolve( context, pkg.browser || `dist/${name}.js` );
-   const rules = options.rules || [];
-   const alias = options.alias || {};
+   const resolve = options.resolve || {};
+   const module = options.module || {};
+   const alias = resolve.alias || {};
 
    const externalNames = []
       .concat( Object.keys( pkg.dependencies || {} ) )
@@ -45,12 +46,8 @@ export function webpack( options = {} ) {
          path: path.dirname( browser ),
          publicPath: `/${path.relative( context, path.dirname( browser ) )}`
       },
-      resolve: {
-         alias
-      },
-      module: {
-         rules
-      },
+      resolve,
+      module,
       plugins,
       devtool
    };
