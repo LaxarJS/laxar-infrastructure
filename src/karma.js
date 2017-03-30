@@ -6,7 +6,6 @@
 
 import path from 'path';
 import { webpack } from './webpack';
-import { DUMMY_PATH } from './dummy';
 
 export function karma( specs, options ) {
    const browsers = [];
@@ -40,7 +39,7 @@ export function karma( specs, options ) {
       reporters.push( 'saucelabs' );
    }
 
-   const polyfills = path.resolve( options.context, 'node_modules/laxar/dist/polyfills.js' ) 
+   const polyfills = path.resolve( options.context, 'node_modules/laxar/dist/polyfills.js' );
    const entry = require.resolve( './dummy.js' );
    const files = [
       polyfills,

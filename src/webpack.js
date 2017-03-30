@@ -32,7 +32,7 @@ export function webpack( options = {} ) {
    const devtool = options.devtool || '#source-map';
 
    const useMain = new NormalModuleReplacementPlugin(
-      new RegExp( browser.replace( /\([.\\(){}\[\]?*+^$]\)/g, '\\$1' ) + '$' ),
+      new RegExp( browser.replace( /\([.\\(){}[\]?*+^$]\)/g, '\\$1' ) + '$' ),
       result => {
          if( result.resource === browser ) {
             result.resource = path.resolve( context, main );
@@ -140,7 +140,7 @@ function mergeConfig( config, ...configs ) {
 
    configs.forEach( source => {
       Object.keys( source ).forEach( key => {
-         let value = source[ key ];
+         const value = source[ key ];
 
          if( Array.isArray( value ) ) {
             config[ key ] = config[ key ] || [];
