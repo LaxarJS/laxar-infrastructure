@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v2.0.0-rc.0
+
 - [#11](https://github.com/LaxarJS/laxar-infrastructure/issues/11): documentation: basic README.md
 
 
