@@ -2,6 +2,8 @@
 
 ## Last Changes
 
+- [#12](https://github.com/LaxarJS/laxar-infrastructure/issues/12): Updated dependency
+
 
 ## v2.0.0-rc.0
 
