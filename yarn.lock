@@ -1178,9 +1178,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-laxarjs@^2.0.0-rc.0:
-  version "2.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-laxarjs/-/eslint-config-laxarjs-2.0.0-rc.0.tgz#bef8972f85dac0ead520fe4bded7993dfe654a06"
+eslint-config-laxarjs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-laxarjs/-/eslint-config-laxarjs-2.0.0.tgz#720aa9c47ee4c18fac3d5f359c3fb9c15233c38f"
 
 eslint@^3.0.1:
   version "3.16.1"
