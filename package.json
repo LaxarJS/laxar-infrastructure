@@ -1,6 +1,6 @@
 {
   "name": "laxar-infrastructure",
-  "version": "2.0.1",
+  "version": "2.1.0-rc.0",
   "license": "MIT",
   "keywords": [
     "LaxarJS",
@@ -25,7 +25,7 @@
     "eslint": "^3.0.1",
     "eslint-config-laxarjs": "^2.0.0",
     "jasmine-core": "^2.5.2",
-    "karma": "^2.0.2",
+    "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.1",
     "karma-ie-launcher": "^1.0.0",
