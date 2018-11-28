@@ -3,6 +3,7 @@
 ## Last Changes
 
 
+## v2.1.0
 ## v2.1.0-rc.0
 
 - [#15](https://github.com/LaxarJS/laxar-infrastructure/issues/15): Updated dependencies for npm audit
