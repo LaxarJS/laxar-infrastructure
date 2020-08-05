@@ -2,6 +2,9 @@
 
 ## Last Changes
 
+
+## v3.0.0-beta.0
+
 - [#23](https://github.com/LaxarJS/laxar-infrastructure/issues/23): Modernize dependencies
    + **BREAKING CHANGE:** see ticket for details
 
