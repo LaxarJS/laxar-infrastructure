@@ -1,6 +1,6 @@
 {
   "name": "laxar-infrastructure",
-  "version": "2.1.0",
+  "version": "3.0.0-pre",
   "license": "MIT",
   "keywords": [
     "LaxarJS",
@@ -18,31 +18,30 @@
   },
   "main": "lib",
   "scripts": {
-    "prepublish": "babel -d lib src",
+    "prepare": "babel -d lib src",
     "test": "eslint src"
   },
   "dependencies": {
-    "eslint": "^3.0.1",
+    "eslint": "^6.8.0",
     "eslint-config-laxarjs": "^2.0.0",
-    "jasmine-core": "^2.5.2",
-    "karma": "^3.1.1",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-firefox-launcher": "^1.0.1",
+    "jasmine-core": "^3.6.0",
+    "karma": "^5.1.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.3.0",
     "karma-ie-launcher": "^1.0.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-jasmine": "^3.3.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.2",
-    "loader-utils": "^1.0.3",
-    "source-map-support": "^0.4.10",
-    "webpack-jasmine-html-runner-plugin": "^0.7.0"
+    "karma-webpack": "~4.0.2",
+    "loader-utils": "^2.0.0",
+    "source-map-support": "^0.5.19",
+    "webpack-jasmine-html-runner-plugin": "^0.9.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-core": "^6.23.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0"
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-proposal-object-rest-spread": "~7.11.0",
+    "@babel/preset-env": "~7.11.0"
   }
 }

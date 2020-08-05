@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 aixigo AG
+ * Copyright 2020 aixigo AG
  * Released under the MIT license.
  * http://laxarjs.org/license
  */
@@ -17,22 +17,17 @@ export function karma( specs, options ) {
          'chrome': 'SauceLabs Chrome',
          'firefox': 'SauceLabs Firefox',
          'internet explorer': 'SauceLabs IE',
-         'safari': 'SauceLabs Safari',
-         'phantomjs': 'PhantomJS'
+         'safari': 'SauceLabs Safari'
       } : {
          'chrome': process.env.TRAVIS ? 'Chrome TravisCi' : 'Chrome',
          'firefox': 'Firefox',
          'internet explorer': 'IE',
-         'safari': 'Safari',
-         'phantomjs': 'PhantomJS'
+         'safari': 'Safari'
       };
 
       process.env.BROWSER.split( ',' ).forEach( browser => {
          browsers.push( launcherName[ browser ] );
       } );
-   }
-   else {
-      browsers.push( 'PhantomJS' );
    }
 
    if( process.env.TRAVIS && isSauceAvailable ) {

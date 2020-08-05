@@ -1,8 +1,8 @@
 # LaxarJS Infrastructure
 
-> not for public consumption: base webpack/karma configuration for LaxarJS core modules
+> base webpack/karma configuration for LaxarJS core modules
 
-This is intended for _internal_ use by LaxarJS artifacts, to avoid duplicating webpack and karma configuration across projects.
+This is mainly intended for _internal_ use by LaxarJS artifacts, to avoid duplicating webpack and karma configuration across projects.
 
 ## Usage
 
